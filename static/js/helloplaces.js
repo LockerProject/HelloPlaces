@@ -13,7 +13,7 @@ function initializeMap() {
     };
 
     map = new google.maps.Map(document.getElementById('mapcanvas'), myOptions);
-    
+
     addMarker(37.759, -122.410, "Singly HQ");
 }
 
@@ -36,10 +36,14 @@ function loadPlaceslist(offset, limit) {
                 continue;
             }
             var atSeparator = ' @ ';
-            if (place.network === 'glatitude') {
+            if (place.network === 'glatitude' || !place.title) {
                 var atSeparator = '';
             }
-            $placeslist.append('<li class="place"><a class="placelink" href="#" data-id="' + place._id + '" data-me="' + place.me + '" data-network="' + place.network + '" data-path="' + place.path + '" data-lat="' + place.lat + '" data-lng="' + place.lng + '" data-title="' + place.title + '"><div class="filler"><img class="network" src="/Me/helloplaces/static/img/' + place.network + '.png" /><div class="title">' + place.from + atSeparator + place.title + '</div><div class="date">' + moment(place.at).format('h:mma') + ' on ' + moment(place.at).format('M/D/YYYY') + '</div></div></a></li>');
+            $placeslist.append('<li class="place"><a class="placelink" href="#" data-id="' + place._id + '" data-me="' + place.me +
+                               '" data-network="' + place.network + '" data-path="' + place.path + '" data-lat="' + place.lat +
+                               '" data-lng="' + place.lng + '" data-title="' + place.title + '"><div class="filler"><img class="network" src="/Me/helloplaces/static/img/' +
+                               place.network + '.png" /><div class="title">' + place.from + atSeparator + place.title + '</div><div class="date">' + moment(place.at).format('h:mma') +
+                               ' on ' + moment(place.at).format('M/D/YYYY') + '</div></div></a></li>');
         }
     };
 
@@ -52,7 +56,7 @@ function loadPlaceslist(offset, limit) {
 
 function addMarker(lat, lng, title, network) {
     var markerObj = {
-                    position: new google.maps.LatLng(lat, lng), 
+                    position: new google.maps.LatLng(lat, lng),
                     map: map,
                     draggable: false,
                     animation: google.maps.Animation.DROP,
@@ -61,7 +65,7 @@ function addMarker(lat, lng, title, network) {
     if (network !== undefined) {
      markerObj.icon = '/Me/helloplaces/static/img/' + network + '-marker.png';
     }
-    
+
     var marker = new google.maps.Marker(markerObj);
     markers.push(marker);
 }
@@ -86,7 +90,7 @@ function loadScript() {
 
 $(function() {
     loadPlaceslist(0, 1000); // get infinite scroll working here
-    
+
     $(".placelink").live('click', function(e) {
         e.preventDefault();
         clearOverlays();
