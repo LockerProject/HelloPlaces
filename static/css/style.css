@@ -1,4 +1,4 @@
-body { 
+body {
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	font-size: .8em;
 }
@@ -22,18 +22,18 @@ body {
 	border-bottom: 1px solid #ccc;
 }
 
-#placeslist li .date { 
-	font-size: 80%; 
+#placeslist li .date {
+	font-size: 80%;
 }
 
-#placeslist li .network { 
+#placeslist li .network {
 	float: left;
 	padding: 0 5px 0 0;
 }
 
 #placeslist li .filler {
-	width: auto;	
-	height: 40px;	
+	width: auto;
+	height: 40px;
 	padding: 15px 5px 12px;
 }
 
