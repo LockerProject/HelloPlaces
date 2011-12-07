@@ -6,7 +6,8 @@
     "static":"true",
     "uses":["twitter", "foursquare", "glatitude"],
     "viewer":"places",
-    "author":"Singly",
+    "author":"Singly, Inc.",
+    "github":"https://github.com/LockerProject/HelloPlaces",
     "autoInstall":true,
     "handle":"helloplaces"
 }
